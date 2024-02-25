@@ -3,8 +3,8 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 import { random } from "maath";
 
-const Stars = (props) => {
-  const ref = useRef();
+const Stars = () => {
+  const ref = useRef(null);
   const [sphere] = useState(() =>
     random.inSphere(new Float32Array(5001), { radius: 1.2 })
   );
@@ -18,12 +18,12 @@ const Stars = (props) => {
 
   return (
     <group rotation={[0, 0, Math.PI / 4]}>
-      <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
+      <Points ref={ref} positions={sphere} stride={3} frustumCulled>
         <PointMaterial
           transparent
           color="#f272c8"
           size={0.002}
-          sizeAttenuation={true}
+          sizeAttenuation
           depthWrite={false}
         />
       </Points>
@@ -33,7 +33,7 @@ const Stars = (props) => {
 
 const StarsCanvas = () => {
   return (
-    <div className="absolute inset-0 z-[-1] h-auto w-full bg-black">
+    <div className="absolute inset-0 z-[-1] h-auto w-full bg-primary">
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Suspense fallback={null}>
           <Stars />
