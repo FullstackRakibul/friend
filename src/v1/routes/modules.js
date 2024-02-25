@@ -6,14 +6,8 @@ import GuestRoutes from "./guestRoutes/guestRoutes";
 const ModulesRoutes = () => {
   return (
     <Routes>
-      <Route
-        path="/auth/*"
-        element={<AuthRoutes />}
-      />
-      <Route
-        path="/guest/*"
-        element={<GuestRoutes />}
-      />
+      <Route path="/auth/*" element={<AuthRoutes />} />
+      <Route path="/*" element={<GuestRoutes />} />
     </Routes>
   );
 };
