@@ -12,6 +12,7 @@ module.exports = {
     fontFamily: {
       sans: ["Montserrat", "sans-serif"],
       anek: ["Anek-Bangle", "sans-serif"],
+      noto: ["Noto Sans Bengali", "sans-serif"],
     },
     extend: {
       colors: {
