@@ -35,8 +35,8 @@ const QuestionContainer = ({ onButtonClickB1, onButtonClickB2 }) => {
       </section>
       {visible && (
         <LetterComponent
-          username="@binteIslam"
-          letterBody="qwe qq sfsd sdfr vs ssgsrg brsb sbr"
+          username="@binte"
+          letterBody=""
           friend="@aName"
           visible={visible}
         />
