@@ -24,9 +24,10 @@ const QuestionContainer = ({ onButtonClickB1, onButtonClickB2 }) => {
     <>
       <section className="flex justify-center items-center font-semibold text-2xl">
         <div className="bg-white bg-opacity-10 p-6 rounded-lg text-center">
-          <p className="text-white mb-4 font-noto ">
-            স্নেহসবুজ দিন, তোমার কাছে ঋণ...
+          <p className="text-white  mb-4 font-noto ">
+            এমনও তো হয় কোনোদিন, পৃথিবী বান্ধবহীন...
           </p>
+          <p className="text-white mb-4 font-noto ">তুমি যাও রেলব্রীজে একা_</p>
           <div className="flex justify-center space-x-4">
             <CustomButton text="চিঠি" onClick={handleClickB1} color="blue" />
             <CustomButton text="কবিতা" onClick={handleClickB2} color="blue" />
@@ -35,7 +36,7 @@ const QuestionContainer = ({ onButtonClickB1, onButtonClickB2 }) => {
       </section>
       {visible && (
         <LetterComponent
-          username="@binte"
+          username="@userName"
           letterBody=""
           friend="@aName"
           visible={visible}
