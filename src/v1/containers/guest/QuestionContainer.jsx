@@ -5,38 +5,22 @@ import { useWindowSize } from "react-use";
 
 const BirthdayPage = () => {
   const [showLetter, setShowLetter] = useState(false);
-  const [player, setPlayer] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
   const { width, height } = useWindowSize();
 
   const handleShowLetter = () => {
     setShowLetter(true);
   };
 
-  // Initialize YouTube Player
-  const onIframeLoad = (event) => {
-    const iframe = event.target;
-    const player = new window.YT.Player(iframe, {
-      events: {
-        onReady: () => setPlayer(player),
-      },
-    });
-  };
-
-  // Play or Pause Video
-  const togglePlayback = () => {
-    if (player) {
-      if (isPlaying) {
-        player.pauseVideo();
-      } else {
-        player.playVideo();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-pink-100 to-purple-200 text-gray-800 font-sans p-4">
+      {/* Hidden YouTube Player for Background Music */}
+      <iframe
+        src="https://www.youtube.com/embed/NN_uehspVSc?autoplay=1&loop=1&playlist=NN_uehspVSc"
+        allow="autoplay"
+        style={{ display: "none" }}
+        title="Background Music"
+      ></iframe>
+
       {/* Header */}
       <Confetti width={width} height={height} numberOfPieces={100} />
       <motion.div
@@ -79,14 +63,6 @@ const BirthdayPage = () => {
         >
           📜 ওগো বন্ধু শোনো
         </motion.button>
-        <motion.a
-          href="#poem"
-          whileHover={{ scale: 1.05, backgroundColor: "#F59E0B" }}
-          whileTap={{ scale: 0.95 }}
-          className="w-full bg-yellow-500 text-white px-6 py-3 rounded-lg shadow-lg font-bold text-center transition-transform duration-300"
-        >
-          🎶 নাও , একটু গান শোনো...
-        </motion.a>
       </div>
 
       {/* Special Letter */}
@@ -102,41 +78,6 @@ const BirthdayPage = () => {
           </p>
         </motion.div>
       )}
-
-      {/* Embedded YouTube Song */}
-      <section
-        id="poem"
-        className="mt-16 w-full max-w-md bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-lg overflow-hidden"
-      >
-        <div className="relative">
-          {/* Iframe */}
-          <iframe
-            id="youtube-player"
-            src="https://www.youtube.com/embed/NN_uehspVSc?enablejsapi=1"
-            title="Birthday Song"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture "
-            allowFullScreen
-            className="w-full h-48 md:h-64"
-            onLoad={onIframeLoad}
-          ></iframe>
-
-          {/* Overlay Controls */}
-          <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-30 hover:bg-opacity-0 transition duration-300">
-            <button
-              onClick={togglePlayback}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md font-bold text-sm"
-            >
-              {isPlaying ? "⏸ Pause" : "▶ Play"}
-            </button>
-          </div>
-        </div>
-        <div className="p-4 text-center">
-          <h3 className="text-lg font-bold">🎶 Birthday Song</h3>
-          <p className="text-sm text-gray-600">
-            Enjoy this special song just for you!
-          </p>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="mt-10 text-sm text-center text-gray-500">
